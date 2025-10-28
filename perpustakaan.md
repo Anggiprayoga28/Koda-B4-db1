@@ -30,7 +30,7 @@ erDiagram
     }
 
 buku}o--o{rak_buku : diletakkan
-kategori|o--|{buku : nama
+kategori|o--|{buku : id
 peminjam}o--o{buku : meminjam
 petugas}|--|{peminjam : meminjamkan
 ```
