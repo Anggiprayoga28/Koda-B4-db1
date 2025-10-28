@@ -1,66 +1,6 @@
-# ERD Sistem Manajemen Perpustakaan
+# Library Management System
 
-Proyek ini berisi **Entity Relationship Diagram (ERD)** untuk sistem manajemen perpustakaan. Diagram ini menggambarkan hubungan antar entitas utama seperti **buku**, **kategori**, **rak buku**, **petugas**, dan **peminjam**.
-
----
-
-## Struktur Entitas
-
-### 1. **Buku**
-| Kolom | Tipe Data | Keterangan |
-|-------|------------|------------|
-| id | int | Primary Key |
-| nama | string | Nama buku |
-| penulis | string | Nama penulis buku |
-| penerbitan | string | Tahun atau nama penerbit |
-
-### 2. **Kategori**
-| Kolom | Tipe Data | Keterangan |
-|-------|------------|------------|
-| id | int | Primary Key |
-| nama | string | Nama kategori buku |
-
-### 3. **Rak Buku**
-| Kolom | Tipe Data | Keterangan |
-|-------|------------|------------|
-| id | int | Primary Key |
-| code | string | Kode lokasi rak buku |
-
-### 4. **Petugas**
-| Kolom | Tipe Data | Keterangan |
-|-------|------------|------------|
-| id | int | Primary Key |
-| nama | string | Nama petugas |
-| jenis_kelamin | string | Jenis kelamin petugas |
-| alamat | string | Alamat petugas |
-| no_hp | string | Nomor telepon petugas |
-
-### 5. **Peminjam**
-| Kolom | Tipe Data | Keterangan |
-|-------|------------|------------|
-| id | int | Primary Key |
-| nama | string | Nama peminjam |
-| jenis_kelamin | string | Jenis kelamin peminjam |
-| alamat | string | Alamat peminjam |
-| no_hp | string | Nomor telepon peminjam |
-
----
-
-## Hubungan Antar Entitas
-
-- **Kategori** memiliki banyak **Buku**  
-  `kategori |o--|{ buku : nama`
-
-- **Buku** diletakkan di **Rak Buku**  
-  `buku }o--o{ rak_buku : diletakkan`
-
-- **Peminjam** dapat meminjam banyak **Buku**  
-  `peminjam }o--o{ buku : meminjam`
-
-- **Petugas** meminjamkan kepada **Peminjam**  
-  `petugas |--|{ peminjam : meminjamkan`
-
----
+Sistem Manajemen Perpustakaan ini dirancang untuk mengelola data buku, kategori buku, rak buku, anggota perpustakaan, petugas, serta proses peminjaman buku. Sistem ini mempermudah pencatatan dan pelacakan buku yang dipinjam oleh anggota serta siapa petugas yang memproses transaksi tersebut.
 
 ## Diagram ERD
 
@@ -110,6 +50,37 @@ erDiagram
 
 ```
 
+
+## Struktur folder
+| Tabel          | Deskripsi                                             |
+| -------------- | ----------------------------------------------------- |
+| **category**   | Menyimpan daftar kategori buku                        |
+| **bookshelf**  | Menyimpan kode rak buku dan mengacu pada kategori     |
+| **books**      | Menyimpan informasi buku serta lokasi rak penyimpanan |
+| **librarians** | Menyimpan data petugas perpustakaan                   |
+| **members**    | Menyimpan data anggota perpustakaan                   |
+| **borrowing**  | Mencatat transaksi peminjaman buku                    |
+
+
+## Relasi Antar Tabel
+
+- Satu kategori dapat memiliki banyak rak buku.
+- Satu rak buku dapat berisi banyak buku.
+- Satu buku dapat dipinjam dalam banyak transaksi peminjaman.
+- Satu anggota dapat melakukan banyak transaksi peminjaman.
+- Satu petugas dapat memproses banyak transaksi peminjaman.
+
+## Tujuan Sistem
+
+- Mempermudah pengelolaan data buku dan kategori.
+- Melacak status peminjaman buku oleh anggota.
+- Mencatat siapa petugas yang memproses peminjaman.
+
+## Fitur yang Dapat Dikembangkan
+
+- Sistem login untuk petugas.
+- Batas waktu peminjaman & denda keterlambatan.
+- Laporan statistik peminjaman per bulan.
 
 ## Keterangan
 
